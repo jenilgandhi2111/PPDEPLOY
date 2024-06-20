@@ -61,39 +61,6 @@ try {
       headers: true,
     })
   );
-
-
-
-  // const port = hostingConfig.SERVER_PORT_NO
-  if (process.env.NODE_ENV == "production") {
-    // app.listen(3000, '127.0.0.1', 511, () => {
-    //   console.log(`Production server is running on port 3000`);
-    // });
-    app.listen(process.env.PORT, () => {
-      console.log(`Production server is running on port 3000`);
-    });
-
-    app.post("/monitorstats", (req, res) => {
-      exec(`echo "-------------------------------------------";mpstat;echo "-------------------------------------------";iostat; echo "-------------------------------------------";vmstat;`, (error, stdout, stderr) => {
-        if (error) {
-          return res.send(error.toString())
-        }
-        if (stderr) {
-          return res.send(stderr.toString())
-        }
-        // console.log(`stdout: ${stdout}`);
-        return res.send(stdout.toString())
-      });
-    });
-  }
-  else {
-
-    app.listen(process.env.PORT, () => {
-      console.log(`Development server is running on port ${process.env.PORT}`);
-    });
-  }
-
-  //routers
   app.use("/public", express.static(__dirname + "/public"));
   app.use("/student", StudentRouter);
   app.use("/studentLogin", StudentLoginRouter);
@@ -113,27 +80,14 @@ try {
   );
   app.use("/reports", ReportsRouter);
   app.use("/logout", LogoutRouter);
-
-  if (process.env.NODE_ENV === "production") {
-    if (process.env.HOSTENV == "heroku") {
-      app.use(express.static(path.join(__dirname, "../Client", "/build")));
-      app.get("*", (req, res) => {
-        res.sendFile(
-          path.resolve(__dirname, "../Client", "./build", "index.html")
-        );
-      });
-    } else {
-      console.log("Here");
-      app.use(express.static(path.join(__dirname, "./build")));
+  app.listen(3000, () => {
+    console.log(`Production server is running on port 3000`);
+  });
+  app.use(express.static(path.join(__dirname, "./build")));
       app.get("*", (req, res) => {
         res.sendFile(path.resolve(__dirname, "./build", "index.html"));
       });
-    }
-  } else {
-    app.get("/", (req, res) => {
-      res.send("Working all right!");
-    });
-  }
+
 } catch (err) {
   console.log(err.toString());
 }
