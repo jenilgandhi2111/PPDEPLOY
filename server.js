@@ -53,6 +53,9 @@ try {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static(__dirname + "/public"));
   app.use(cookieParser());
+  app.get("/testing",(req,res)=>{
+    return res.send("here in testing")
+  })
   app.use(
     rateLimit({
       windowMs: 1000 * 60, // 12 hour duration in milliseconds
