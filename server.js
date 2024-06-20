@@ -53,7 +53,7 @@ try {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static(__dirname + "/public"));
   app.use(cookieParser());
-  app.use(cors({origin:"https://ppdeploy.vercel.app",methods:["POST","GET"],credentials:true}))
+  app.use(cors({origin:"https://ppdeploy-dzsdcwxlm-jenil-gandhis-projects.vercel.app/",methods:["POST","GET"],credentials:true}))
   app.get("/testing",(req,res)=>{
     return res.send("here in testing")
   })
