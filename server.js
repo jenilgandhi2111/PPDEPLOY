@@ -80,7 +80,7 @@ try {
   );
   app.use("/reports", ReportsRouter);
   app.use("/logout", LogoutRouter);
-  app.listen(3000, () => {
+  app.listen(process.env.PORT, () => {
     console.log(`Production server is running on port 3000`);
   });
   app.use(express.static(path.join(__dirname, "./build")));
