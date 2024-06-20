@@ -26,7 +26,7 @@ const ReportsRouter = require("./Routers/ReportsRouter");
 const LogoutRouter = require("./Routers/LogoutRouter");
 const fileupload = require("express-fileupload");
 const { exec } = require("child_process");
-
+const cors = require("cors")
 require("dotenv").config();
 
 if (process.env.NODE_ENV == "production") {
@@ -53,6 +53,7 @@ try {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static(__dirname + "/public"));
   app.use(cookieParser());
+  app.use(cors({origin:"https://ppdeploy.vercel.app",methods:["POST","GET"],credentials:true}))
   app.get("/testing",(req,res)=>{
     return res.send("here in testing")
   })

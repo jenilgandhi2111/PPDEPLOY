@@ -5,13 +5,14 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"NODE_ENV='production' PORT=3000 node server.js"
+    "start": "NODE_ENV='production' PORT=3000 node server.js"
   },
   "author": "RJK",
   "license": "ISC",
   "dependencies": {
     "adm-zip": "^0.5.9",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "csvtojson": "^2.0.10",
     "dotenv": "^16.0.0",
@@ -30,5 +31,4 @@
     "string-to-stream": "^3.0.1",
     "zip-a-folder": "^1.1.5"
   }
-  
 }
