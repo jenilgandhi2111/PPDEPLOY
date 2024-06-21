@@ -85,9 +85,9 @@ try {
   );
   app.use("/reports", ReportsRouter);
   app.use("/logout", LogoutRouter);
-  // app.listen(3000, () => {
-  //   console.log(`Production server is running on port 3000`);
-  // });
+  app.listen(3000, () => {
+    console.log(`Production server is running on port 3000`);
+  });
   app.use(express.static(path.join(__dirname, "./build")));
       app.get("*", (req, res) => {
         res.sendFile(path.resolve(__dirname, "./build", "index.html"));
