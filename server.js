@@ -5,7 +5,6 @@ const http = require("http");
 const proc = require("process");
 const app = express();
 const fs = require("fs");
-const serverless = require('serverless-http');
 
 const rateLimit = require("express-rate-limit");
 const hostingConfig = require("./Config/hostingConfig");
