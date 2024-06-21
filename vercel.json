@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "buildCommand": "npm i mysql2 --save",
     "builds": [
       { "src": "./server.js", "use": "@vercel/node" }
     ],
