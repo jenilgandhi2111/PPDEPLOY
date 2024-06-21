@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "devs": "npm uninstall -g sequelize && npm install --save sequelize",
-    "start": "NODE_ENV='production' PORT=3000 node server.js"
+    "start": "NODE_ENV='production' PORT=3000 node server.js",
+    "build":"npm i mysql2 --save"
   },
   "author": "RJK",
   "license": "ISC",
