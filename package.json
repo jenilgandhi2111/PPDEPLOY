@@ -10,6 +10,9 @@
   "author": "RJK",
   "license": "ISC",
   "dependencies": {
+    "netlify-cli": "^12.7.2",
+    "netlify-lambda": "^2.0.15",
+    "serverless-http": "^2.7.0",
     "adm-zip": "^0.5.9",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

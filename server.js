@@ -5,6 +5,8 @@ const http = require("http");
 const proc = require("process");
 const app = express();
 const fs = require("fs");
+const serverless = require('serverless-http');
+
 const rateLimit = require("express-rate-limit");
 const hostingConfig = require("./Config/hostingConfig");
 const StudentRouter = require("./Routers/StudentRouter");
@@ -84,13 +86,15 @@ try {
   );
   app.use("/reports", ReportsRouter);
   app.use("/logout", LogoutRouter);
-  app.listen(3000, () => {
-    console.log(`Production server is running on port 3000`);
-  });
+  // app.listen(3000, () => {
+  //   console.log(`Production server is running on port 3000`);
+  // });
   app.use(express.static(path.join(__dirname, "./build")));
       app.get("*", (req, res) => {
         res.sendFile(path.resolve(__dirname, "./build", "index.html"));
       });
+  app.use('/.netlify/functions/api', router);
+
 
 } catch (err) {
   console.log(err.toString());
